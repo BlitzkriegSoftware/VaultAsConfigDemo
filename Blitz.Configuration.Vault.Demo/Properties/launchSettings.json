@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Blitz.Configuration.Vault.Demo": {
+      "commandName": "Project",
+      "commandLineArgs": "-d -e dev -t xyz -u http://localhost:8200"
+    }
+  }
+}
