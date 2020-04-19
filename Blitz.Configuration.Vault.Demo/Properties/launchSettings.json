@@ -2,7 +2,7 @@
   "profiles": {
     "Blitz.Configuration.Vault.Demo": {
       "commandName": "Project",
-      "commandLineArgs": "-d -e dev -t xyz -u http://localhost:8200"
+      "commandLineArgs": "-d -e dev -t myroot -u http://localhost:8200 -a myApp"
     }
   }
 }

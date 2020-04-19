@@ -10,9 +10,11 @@ Using Hashicorp Vault as a Configuration Store
 
 5. Check to make sure it started ok `./scripts/vault-status.sh`
 
-6. Run the demo in Visual Studio or Code to see how it works
+6. Put some values into the Vault by running `./put-settings.sh` which puts the json file into the vault under `myApp/dev` using the file `myApp-dev-settings.json`
 
-7. Stop Docker Vault `./scripts/start_docker_vault.sh`
+7. Run the demo in Visual Studio or Code to see how it works
+
+8. Stop Docker Vault `./scripts/start_docker_vault.sh`
 
 ## Setting up a structure for key value pairs or json blobs
 
@@ -20,7 +22,7 @@ Using Hashicorp Vault as a Configuration Store
 
    `/{application}/{environment}`
 
-2. Decide on loose key/value pairs or a json datagram. For this demo we have examples of both.
+2. Decide on loose key/value pairs or a json datagram. For this demo we have selected json (as we think is is tidy).
 
 3. Store the configuration using code or the **vault** cli
 

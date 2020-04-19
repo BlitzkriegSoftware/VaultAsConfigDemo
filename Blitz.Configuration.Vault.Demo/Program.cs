@@ -41,9 +41,9 @@ namespace Blitz.Configuration.Vault.Demo
 
                        vaultConfiguration = new Library.Models.VaultConfiguration()
                        {
-                           Application = string.IsNullOrWhiteSpace(o.Application) ? Environment.GetEnvironmentVariable("application") : o.Application,
+                           Application = string.IsNullOrWhiteSpace(o.Application) ? Environment.GetEnvironmentVariable("vaultapp") : o.Application,
                            
-                           EnvironmentPath = string.IsNullOrWhiteSpace(o.Environment) ? Environment.GetEnvironmentVariable("environment") : o.Environment,
+                           EnvironmentPath = string.IsNullOrWhiteSpace(o.Environment) ? Environment.GetEnvironmentVariable("vaultenv") : o.Environment,
                            
                            RootPath = string.IsNullOrWhiteSpace(o.RootPath) ? Environment.GetEnvironmentVariable("vaultrootpath") : o.RootPath,
                            
@@ -58,12 +58,16 @@ namespace Blitz.Configuration.Vault.Demo
                            exitCode = -3;
                        } else
                        {
-                           //var helper = new VaultHelper(programLogger, vaultConfig);
-                           //var d = helper.SettingsGet(My_Application, My_Environment);
-                           //foreach (var nv in d)
-                           //{
-                           //    programLogger.LogInformation($"{nv.Key}: {nv.Value}");
-                           //}
+                           var lf = Services.GetService<ILoggerFactory>();
+                           var programLogger = lf.CreateLogger<Library.VaultConfigClient>();
+
+                           var client = new Library.VaultConfigClient(programLogger, vaultConfiguration);
+
+                           var d = client.SettingsGet();
+                           foreach (var nv in d)
+                           {
+                               programLogger.LogInformation($"{nv.Key}: {nv.Value}");
+                           }
                        }
                    })
                    .WithNotParsed(errs =>

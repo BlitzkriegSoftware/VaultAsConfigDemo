@@ -26,7 +26,7 @@ namespace Blitz.Configuration.Vault.Library
         #region "CTOR"
         private VaultConfigClient() { }
 
-        public VaultConfigClient(ILogger<VaultConfigClient> logger, Models.VaultConfiguration configuration)
+        public VaultConfigClient(ILogger logger, Models.VaultConfiguration configuration)
         {
             _logger = logger;
             _config = configuration;
