@@ -17,9 +17,9 @@
 
         public string RootPath { get; set; } = "v1/secret/data";
 
-        public string Application { get; set; } = "DemoApp";
+        public string Application { get; set; } = "myApp";
 
-        public string EnvironmentPath { get; set; } = "Dev";
+        public string EnvironmentPath { get; set; } = "dev";
 
         private static string CleanSegment(string segment)
         {
@@ -56,8 +56,8 @@
             {
                 case "vaulturl": this.Url = value; break;
                 case "vaulttoken": this.Token = value; break;
-                case "application": this.Application = value; break;
-                case "environment": this.EnvironmentPath = value; break;
+                case "vaultapp": this.Application = value; break;
+                case "vaultenv": this.EnvironmentPath = value; break;
                 case "vaultrootpath": this.RootPath = value; break;
             }
         }

@@ -21,13 +21,13 @@ namespace Blitz.Configuration.Vault.Demo.Models
         /// <summary>
         /// Application
         /// </summary>
-        [Option('a', "App", Required = false, HelpText = "Application Name (env: 'application')")]
+        [Option('a', "App", Required = false, HelpText = "Application Name (env: 'vaultapp')")]
         public string Application { get; set; }
 
         /// <summary>
         /// Environment
         /// </summary>
-        [Option('e', "Env", Required = false, HelpText = "Environment (env: 'environment')")]
+        [Option('e', "Env", Required = false, HelpText = "Environment (env: 'vaultenv')")]
         public string Environment { get; set; }
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace Blitz.Configuration.Vault.Demo.Models
             {
                 return new List<Example>() {
                     new Example("From Environment Variables", new CommandLineOptions { }),
-                    new Example("Vary Environment", new CommandLineOptions { Environment = "dev", Application = "myApp", Token = "s3cr3t-fake"  }),
-                    new Example("Full command line", new CommandLineOptions { Application = "myApp", Environment = "dev", Dump = true, Token = "s3cr3t-fake", VaultUrl = "http://localhost:8200", RootPath= "v1/secret/data" })
+                    new Example("Vary Environment", new CommandLineOptions { Environment = "dev", Application = "myApp", Token = "myroot"  }),
+                    new Example("Full command line", new CommandLineOptions { Application = "myApp", Environment = "dev", Dump = true, Token = "myroot", VaultUrl = "http://localhost:8200", RootPath= "v1/secret/data" })
                 };
             }
         }

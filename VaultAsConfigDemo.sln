@@ -15,6 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blitz.Configuration.Vault.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blitz.Configuration.Vault.Test", "Blitz.Configuration.Vault.Test\Blitz.Configuration.Vault.Test.csproj", "{A3FFB138-8F5D-4761-AA16-326D065C3F49}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{6F746656-C109-49DC-A4F5-3479E94D1412}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\start_docker_vault.sh = scripts\start_docker_vault.sh
+		scripts\stop_docker_vault.sh = scripts\stop_docker_vault.sh
+		scripts\vault-status.sh = scripts\vault-status.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +71,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6F746656-C109-49DC-A4F5-3479E94D1412} = {8A942C11-F4CD-4D3E-9D63-2833D6A27092}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4AC40953-86F9-4D4F-B158-3C1D92834C2C}
