@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blitz.Configuration.Vault.L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blitz.Configuration.Vault.Demo", "Blitz.Configuration.Vault.Demo\Blitz.Configuration.Vault.Demo.csproj", "{E6537DB7-D99D-4FAA-9922-B52275558199}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blitz.Configuration.Vault.Test", "Blitz.Configuration.Vault.Test\Blitz.Configuration.Vault.Test.csproj", "{A3FFB138-8F5D-4761-AA16-326D065C3F49}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{6F746656-C109-49DC-A4F5-3479E94D1412}"
 	ProjectSection(SolutionItems) = preProject
 		scripts\myApp-dev-settings.json = scripts\myApp-dev-settings.json
@@ -23,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{6F74
 		scripts\stop_docker_vault.sh = scripts\stop_docker_vault.sh
 		scripts\vault-status.sh = scripts\vault-status.sh
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blitz.Configuration.Vault.Web", "Blitz.Configuration.Vault.Web\Blitz.Configuration.Vault.Web.csproj", "{FF2E3BD5-F36A-4528-B727-E53E747197D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,18 +58,18 @@ Global
 		{E6537DB7-D99D-4FAA-9922-B52275558199}.Release|x64.Build.0 = Release|Any CPU
 		{E6537DB7-D99D-4FAA-9922-B52275558199}.Release|x86.ActiveCfg = Release|Any CPU
 		{E6537DB7-D99D-4FAA-9922-B52275558199}.Release|x86.Build.0 = Release|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Debug|x64.Build.0 = Debug|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Debug|x86.Build.0 = Debug|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Release|x64.ActiveCfg = Release|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Release|x64.Build.0 = Release|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Release|x86.ActiveCfg = Release|Any CPU
-		{A3FFB138-8F5D-4761-AA16-326D065C3F49}.Release|x86.Build.0 = Release|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Debug|x64.Build.0 = Debug|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Debug|x86.Build.0 = Debug|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Release|x64.ActiveCfg = Release|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Release|x64.Build.0 = Release|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Release|x86.ActiveCfg = Release|Any CPU
+		{FF2E3BD5-F36A-4528-B727-E53E747197D3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

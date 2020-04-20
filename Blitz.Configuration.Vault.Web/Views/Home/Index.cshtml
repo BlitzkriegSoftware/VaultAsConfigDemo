@@ -1,0 +1,25 @@
+﻿@model List<Blitz.Configuration.Vault.Web.Models.Triplet>
+@{
+    ViewData["Title"] = "Configuration Dump";
+}
+
+<div class="text-left">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">Category</div>
+        <div class="col">Key</div>
+        <div class="col">Value</div>
+    </div>
+    @{ foreach (var d in Model)
+        {
+        <div class="row">
+            <div class="col font-weight-light">@d.Category</div>
+            <div class="col">@d.Key</div>
+            <div class="col">@d.Value</div>
+        </div>        
+        }
+    }
+</div>

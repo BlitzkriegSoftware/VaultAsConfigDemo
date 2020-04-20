@@ -1,0 +1,32 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:1328",
+      "sslPort": 44352
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "vaulttoken": "myroot",
+        "vaultrootpath": "v1/secret/data",
+        "vaultapp": "myApp",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "vaultenv": "dev",
+        "vaulturl": "http://127.0.0.1:8200"
+      }
+    },
+    "Blitz.Configuration.Vault.Web": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+    }
+  }
+}
