@@ -8,7 +8,7 @@
         /// <summary>
         /// URL
         /// </summary>
-        public string Url { get; set; } = "http://localhost:8200";
+        public string Url { get; set; } = "http://127.0.0.1:8200";
 
         /// <summary>
         /// Token
