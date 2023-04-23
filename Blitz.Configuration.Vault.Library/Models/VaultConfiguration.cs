@@ -6,20 +6,37 @@
     public class VaultConfiguration
     {
         /// <summary>
-        /// URL
+        /// URL to Vault API (or server)
+        /// <para>http[s]://...[:port]</para>
         /// </summary>
-        public string Url { get; set; } = "http://127.0.0.1:8200";
+        public string VaultUrl { get; set; } = "http://127.0.0.1:8200";
 
         /// <summary>
-        /// Token
+        /// Token aka Hashicorp Vault Secret as a Token or Pass-Phrase
+        /// <para>Should not be empty or null</para>
         /// </summary>
-        public string Token { get; set; } = string.Empty;
+        public string VaultToken { get; set; } = string.Empty;
 
+        /// <summary>
+        /// Path to secret data e.g., 
+        /// <example><![CDATA[v1/secret/data]]></example>
+        /// <list type="number">
+        /// <item>Must not start or end with <![CDATA[/]]></item>
+        /// <item>Can be segmented with <![CDATA[/]]></item>
+        /// <item>Can not be a null or empty string</item>
+        /// </list>
+        /// </summary>
         public string RootPath { get; set; } = "v1/secret/data";
 
+        /// <summary>
+        /// Application Name aka your application name e.g., <example>myApp</example>
+        /// </summary>
         public string Application { get; set; } = "myApp";
 
-        public string EnvironmentPath { get; set; } = "dev";
+        /// <summary>
+        /// Environment Abbrev. aka the environment name in abbreviation form e.g., <![CDATA[dev]]>
+        /// </summary>
+        public string EnvironmentAbbrev { get; set; } = "dev";
 
         private static string CleanSegment(string segment)
         {
@@ -31,11 +48,11 @@
             {
                 if (segment.EndsWith("/"))
                 {
-                    segment = segment.Substring(0, segment.Length - 1).Trim();
+                    segment = segment[..^1].Trim();
                 }
                 if (segment.StartsWith("/"))
                 {
-                    segment = segment.Substring(1).Trim();
+                    segment = segment[1..].Trim();
                 }
             }
             return segment;
@@ -44,9 +61,17 @@
 
         /// <summary>
         /// Parse Configuration Data into this Configuration
+        /// <para>Configuration Keys for this Library</para>
+        /// <list type="number">
+        /// <item>vaulturl - <see cref="VaultUrl"/></item>
+        /// <item>vaulttoken - <see cref="VaultToken"/></item>
+        /// <item>vaultapp - <see cref="Application"/></item>
+        /// <item>vaultenv - <see cref="EnvironmentAbbrev"/></item>
+        /// <item>vaultrootpath - <see cref="RootPath"/></item>
+        /// </list>
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
+        /// <param name="name">(sic)</param>
+        /// <param name="value">(sic)</param>
         public void ParseConfigurationField(string name, string value)
         {
             if (string.IsNullOrWhiteSpace(name)) return;
@@ -54,25 +79,25 @@
 
             switch(name.ToLowerInvariant().Trim())
             {
-                case "vaulturl": this.Url = value; break;
-                case "vaulttoken": this.Token = value; break;
+                case "vaulturl": this.VaultUrl = value; break;
+                case "vaulttoken": this.VaultToken = value; break;
                 case "vaultapp": this.Application = value; break;
-                case "vaultenv": this.EnvironmentPath = value; break;
+                case "vaultenv": this.EnvironmentAbbrev = value; break;
                 case "vaultrootpath": this.RootPath = value; break;
             }
         }
 
         /// <summary>
-        /// Is Valid (URL, PATH, TOKEN) are not empty or null
+        /// <see cref="VaultUrl"/>, <see cref="VaultToken"/>, <see cref="Application"/>, and <see cref="EnvironmentAbbrev"/> are not empty or null
         /// </summary>
         public bool IsValid
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(this.Url) ||
+                return !string.IsNullOrWhiteSpace(this.VaultUrl) ||
                        !string.IsNullOrWhiteSpace(this.Application) ||
-                       !string.IsNullOrWhiteSpace(this.EnvironmentPath) ||
-                       !string.IsNullOrWhiteSpace(this.Token);
+                       !string.IsNullOrWhiteSpace(this.EnvironmentAbbrev) ||
+                       !string.IsNullOrWhiteSpace(this.VaultToken);
             }
         }
 
@@ -84,8 +109,7 @@
             get
             {
                 char slash = '/';
-
-                return $"/{(string.IsNullOrWhiteSpace(RootPath) ? string.Empty : this.RootPath + slash)}{CleanSegment(this.Application)}/{CleanSegment(this.EnvironmentPath)}";
+                return $"/{(string.IsNullOrWhiteSpace(RootPath) ? string.Empty : this.RootPath + slash)}{CleanSegment(this.Application)}/{CleanSegment(this.EnvironmentAbbrev)}";
             }
         }
 
@@ -96,8 +120,7 @@
         public override string ToString()
         {
             char slash = '/';
-
-            return $"{CleanSegment(this.Url)}/{(string.IsNullOrWhiteSpace(RootPath) ? string.Empty : this.RootPath + slash)}{CleanSegment(this.Application)}/{CleanSegment(this.EnvironmentPath)}";
+            return $"{CleanSegment(this.VaultUrl)}/{(string.IsNullOrWhiteSpace(RootPath) ? string.Empty : this.RootPath + slash)}{CleanSegment(this.Application)}/{CleanSegment(this.EnvironmentAbbrev)}";
         }
     }
 

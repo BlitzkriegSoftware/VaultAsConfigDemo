@@ -1,10 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
+		<Title>Vault as Config Web</Title>
 		<TargetFramework>net6.0</TargetFramework>
 		<LangVersion>9.0</LangVersion>
-		<Version>6.0.0</Version>
-		<InformationalVersion>6.0.0</InformationalVersion>
+		<Version>6.0.2</Version>
+		<InformationalVersion>6.0.2</InformationalVersion>
+		<Authors>Stuart Williams</Authors>
+		<Copyright>(c) Stuart Williams 2020-2023</Copyright>
+		<Description>How to use Hashicorp Vault as Configuration</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -13,11 +17,19 @@
 		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Blitz.Configuration.Vault.Library\Blitz.Configuration.Vault.Library.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\lib\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 
 </Project>

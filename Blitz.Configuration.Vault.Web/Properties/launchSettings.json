@@ -12,12 +12,12 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "vaulturl": "http://127.0.0.1:8200",
+        "vaultapp": "myApp",
         "vaulttoken": "myroot",
         "vaultrootpath": "v1/secret/data",
-        "vaultapp": "myApp",
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "vaultenv": "dev",
-        "vaulturl": "http://127.0.0.1:8200"
+        "vaultenv": "dev"
       }
     },
     "Blitz.Configuration.Vault.Web": {

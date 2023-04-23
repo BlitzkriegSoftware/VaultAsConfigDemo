@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using Blitz.Configuration.Vault.Library.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 
 namespace Blitz.Configuration.Vault.Library
 {
+    /// <summary>
+    /// Hashicorp Vault Client For Configuration
+    /// </summary>
     public class VaultConfigClient
     {
         #region "Constants"
@@ -26,23 +30,41 @@ namespace Blitz.Configuration.Vault.Library
         #region "CTOR"
         private VaultConfigClient() { }
 
-        public VaultConfigClient(ILogger logger, Models.VaultConfiguration configuration)
+        /// <summary>
+        /// CTOR (Projects w/o an <c>IHttpClientFactory)</c>
+        /// <para>Will build a <c>IHttpClientFactory</c></para>
+        /// </summary>
+        /// <param name="logger">(nullable) ILogger</param>
+        /// <param name="vaultConfig">VaultConfiguration</param>
+        public VaultConfigClient(ILogger logger, Models.VaultConfiguration vaultConfig)
         {
             _logger = logger;
-            _config = configuration;
+            _config = vaultConfig;
 
             var serviceProvider = new ServiceCollection().AddHttpClient().BuildServiceProvider();
             _factory = serviceProvider.GetService<IHttpClientFactory>();
         }
+
+        /// <summary>
+        /// CTOR (Web and other DI Projects)
+        /// </summary>
+        /// <param name="logger">(nullable) ILogger</param>
+        /// <param name="vaultConfig">VaultConfiguration</param>
+        /// <param name="factory">IHttpClientFactory</param>
+        public VaultConfigClient(ILogger logger, VaultConfiguration vaultConfig, IHttpClientFactory factory) : this(logger, vaultConfig)
+        {
+            _factory = factory;
+        }
+
         #endregion
 
         #region "Helpers"
 
         private HttpClient MakeClient()
         {
-            var client = _factory.CreateClient();
-            client.BaseAddress = new Uri(_config.Url);
-            client.DefaultRequestHeaders.Add(TOKEN_HEADER, _config.Token);
+            var client = _factory.CreateClient("VaultConfigClient");
+            client.BaseAddress = new Uri(_config.VaultUrl);
+            client.DefaultRequestHeaders.Add(TOKEN_HEADER, _config.VaultToken);
             return client;
         }
 
@@ -157,7 +179,7 @@ namespace Blitz.Configuration.Vault.Library
             if ((settings == null) || (settings.Count <= 0)) throw new ArgumentNullException(nameof(settings));
 
             var json = DictionaryToJson(settings);
-            if (_logger != null) _logger.LogDebug($"Settings: {json}");
+            _logger?.LogDebug($"Settings: {json}");
 
             var client = MakeClient();
 

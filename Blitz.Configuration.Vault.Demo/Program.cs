@@ -43,18 +43,18 @@ namespace Blitz.Configuration.Vault.Demo
                        {
                            Application = string.IsNullOrWhiteSpace(o.Application) ? Environment.GetEnvironmentVariable("vaultapp") : o.Application,
                            
-                           EnvironmentPath = string.IsNullOrWhiteSpace(o.Environment) ? Environment.GetEnvironmentVariable("vaultenv") : o.Environment,
+                           EnvironmentAbbrev = string.IsNullOrWhiteSpace(o.Environment) ? Environment.GetEnvironmentVariable("vaultenv") : o.Environment,
                            
                            RootPath = string.IsNullOrWhiteSpace(o.RootPath) ? Environment.GetEnvironmentVariable("vaultrootpath") : o.RootPath,
                            
-                           Token = string.IsNullOrWhiteSpace(o.Token) ? Environment.GetEnvironmentVariable("vaultrootpath") : o.Token,
+                           VaultToken = string.IsNullOrWhiteSpace(o.Token) ? Environment.GetEnvironmentVariable("vaultrootpath") : o.Token,
                            
-                           Url = string.IsNullOrWhiteSpace(o.VaultUrl) ? Environment.GetEnvironmentVariable("vaulturl") : o.VaultUrl
+                           VaultUrl = string.IsNullOrWhiteSpace(o.VaultUrl) ? Environment.GetEnvironmentVariable("vaulturl") : o.VaultUrl
                        };
 
                        if(!vaultConfiguration.IsValid)
                        {
-                           Console.WriteLine($"Configuration is invalid: {vaultConfiguration}, Token: {(string.IsNullOrWhiteSpace(vaultConfiguration.Token)? 'n':'y')}");
+                           Console.WriteLine($"Configuration is invalid: {vaultConfiguration}, Token: {(string.IsNullOrWhiteSpace(vaultConfiguration.VaultToken)? 'n':'y')}");
                            exitCode = -3;
                        } else
                        {
