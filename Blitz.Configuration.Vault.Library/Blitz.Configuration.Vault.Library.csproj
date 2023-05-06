@@ -5,8 +5,7 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>9.0</LangVersion>
 		<Version>6.1.0</Version>
-		<InformationalVersion>6.0.2</InformationalVersion>
-		<InformationalVersion>6.0.2</InformationalVersion>
+		<InformationalVersion>6.1.0</InformationalVersion>
 		<Authors>Stuart Williams</Authors>
 		<Copyright>(c) Stuart Williams 2020-2023</Copyright>
 		<Description>[Library] Hashicorp Vault as Configuration</Description>

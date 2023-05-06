@@ -1,0 +1,27 @@
+﻿@model Dictionary<string,string>
+@{
+    ViewData["Title"] = "Metadata";
+}
+
+<div class="text-left">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">Key</div>
+        <div class="col">Value</div>
+    </div>
+    @{ foreach (var d in Model.Keys)
+        {
+        <div class="row">
+            <div class="col">@d</div>
+            <div class="col">@Model[d]</div>
+        </div>
+        }
+    }
+</div>
+
+<div>
+    <a href="/">Key Vault Data</a>
+</div>

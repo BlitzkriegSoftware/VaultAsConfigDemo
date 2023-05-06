@@ -47,5 +47,34 @@ namespace Blitz.Configuration.Vault.Library.Helpers
             builder.AddInMemoryCollection(kvList);
             return builder;
         }
+
+        /// <summary>
+        /// Get Metadata
+        /// </summary>
+        /// <param name="logger">(nullable) ILogger</param>
+        /// <param name="configuration">IConfiguration</param>
+        /// <returns>Dictionary of Metadata</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        public static Dictionary<string, string> GetMetadata(ILogger logger, IConfiguration configuration)
+        {
+            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+
+            var vaultConfig = new Models.VaultConfiguration();
+
+            foreach (var c in configuration.AsEnumerable())
+            {
+                vaultConfig.ParseConfigurationField(c.Key, c.Value);
+            }
+
+            if (!vaultConfig.IsValid) throw new ArgumentException("The configuration for the client is not valid", nameof(vaultConfig));
+
+            var helper = new VaultConfigClient(logger, vaultConfig);
+
+            var d = helper.MetadataGet();
+
+            return d;
+        }
+
     }
 }

@@ -17,6 +17,7 @@
         "vaultapp": "myApp",
         "vaulttoken": "myroot",
         "vaultrootpath": "v1/secret/data",
+        "vaultrootmetadatapath": "v1/secret/metadata",
         "vaultenv": "dev"
       }
     },

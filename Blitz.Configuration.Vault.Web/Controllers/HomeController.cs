@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Blitz.Configuration.Vault.Library.Helpers;
 using Blitz.Configuration.Vault.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -19,13 +20,14 @@ namespace Blitz.Configuration.Vault.Web.Controllers
             _config = config;
         }
 
+        [HttpGet("/")]
         public IActionResult Index()
         {
             var d = new List<Models.Triplet>();
 
             foreach (var c in _config.AsEnumerable())
             {
-                _logger.LogTrace("Key: {0}, Value: {1}", c.Key, c.Value);
+                _logger.LogTrace($"Key: {0}, Value: {1}", c.Key, c.Value);
                 var t = new Models.Triplet()
                 {
                     Key = c.Key,
@@ -48,11 +50,17 @@ namespace Blitz.Configuration.Vault.Web.Controllers
                     t.Weight = 0;
                 }
 
-                if(t.Weight > 0) d.Add(t);
+                if (t.Weight > 0) d.Add(t);
             }
 
-            d.Sort((a, b) => ( b.Weight.CompareTo(a.Weight) ));
+            d.Sort((a, b) => (b.Weight.CompareTo(a.Weight)));
 
+            return View(d);
+        }
+
+        [HttpGet("/Metadata")]
+        public IActionResult Metadata() {
+            var d = VaultConfigurationExtensions.GetMetadata(_logger, _config);
             return View(d);
         }
 

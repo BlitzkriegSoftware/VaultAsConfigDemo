@@ -29,6 +29,16 @@
         public string RootPath { get; set; } = "v1/secret/data";
 
         /// <summary>
+        /// Path to secret <c>Metadata</c>
+        /// <list type="number">
+        /// <item>Must not start or end with <![CDATA[/]]></item>
+        /// <item>Can be segmented with <![CDATA[/]]></item>
+        /// <item>Can not be a null or empty string</item>
+        /// </list>
+        /// </summary>
+        public string MetadataPath { get; set; } = $"v1/secret/metadata";
+
+        /// <summary>
         /// Application Name aka your application name e.g., <example>myApp</example>
         /// </summary>
         public string Application { get; set; } = "myApp";
@@ -84,6 +94,7 @@
                 case "vaultapp": this.Application = value; break;
                 case "vaultenv": this.EnvironmentAbbrev = value; break;
                 case "vaultrootpath": this.RootPath = value; break;
+                case "vaultrootmetadatapath": this.MetadataPath = value; break;
             }
         }
 
@@ -101,15 +112,26 @@
             }
         }
 
+        private const char slash = '/';
+
         /// <summary>
-        /// Return subpath minus root url
+        /// Return subpath (Data) minus root url
         /// </summary>
         public string SubPath
         {
             get
             {
-                char slash = '/';
                 return $"/{(string.IsNullOrWhiteSpace(RootPath) ? string.Empty : this.RootPath + slash)}{CleanSegment(this.Application)}/{CleanSegment(this.EnvironmentAbbrev)}";
+            }
+        }
+
+        /// <summary>
+        /// Return subpath (Metadata) minus root url
+        /// </summary>
+        public string SubMetadataPath
+        {
+            get {
+                return $"/{(string.IsNullOrWhiteSpace(MetadataPath) ? string.Empty : this.RootPath + slash)}{CleanSegment(this.Application)}/{CleanSegment(this.EnvironmentAbbrev)}";
             }
         }
 

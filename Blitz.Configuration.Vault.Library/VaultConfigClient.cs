@@ -134,7 +134,8 @@ namespace Blitz.Configuration.Vault.Library
         /// <summary>
         /// Get Settings from Vault
         /// </summary>
-        /// <returns>Settings Dictionary</returns>
+        /// <returns>Settings Dictionary</returns>\
+        /// <exception cref="HttpRequestException"></exception>
         public Dictionary<string, string> SettingsGet()
         {
             TokenRenew();
@@ -167,6 +168,45 @@ namespace Blitz.Configuration.Vault.Library
 
             return d;
         }
+
+        /// <summary>
+        /// Metadata Get
+        /// </summary>
+        /// <returns>Dictionary of metadata</returns>
+        /// <exception cref="HttpRequestException"></exception>
+        public Dictionary<string, string> MetadataGet()
+        {
+            TokenRenew();
+
+            var d = new Dictionary<string, string>();
+
+            var client = MakeClient();
+
+            var path = _config.SubMetadataPath;
+            var response = client.GetAsync(path).GetAwaiter().GetResult();
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonMessage = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                var o = JObject.Parse(jsonMessage);
+                IEnumerable<JToken> kvs = o.SelectTokens("data.metadata");
+                var children = kvs.Children();
+                foreach (var item in children)
+                {
+                    var key = ((Newtonsoft.Json.Linq.JProperty)item).Name;
+                    var value = ((Newtonsoft.Json.Linq.JProperty)item).Value.ToString();
+                    d.Add(key, value);
+                }
+            }
+            else
+            {
+                var msg = $"{response.StatusCode}: {response.ReasonPhrase}";
+                throw new HttpRequestException(msg);
+            }
+
+            return d;
+        }
+
 
         // $ curl -X PUT -H "X-Vault-Token: $(vault print token)" -d '{"data":{"key1":"data1","key2":"data2","key3":"data3"},"options":{}}' https://localhost:8200/v1/secret/data/myApp/dev
 
