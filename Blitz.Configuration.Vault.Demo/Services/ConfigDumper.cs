@@ -35,17 +35,17 @@ namespace Blitz.Configuration.Vault.Demo.Services
             var ai = AssemblyInfo();
             foreach (var kv in ai)
             {
-                _logger.LogInformation("{0}: {1}", kv.Key, kv.Value);
+                _logger.LogInformation($"{kv.Key}: {kv.Value}");
             }
 
             _logger.LogInformation("\nConfiguration\n");
             foreach (var c in _config.AsEnumerable())
             {
-                _logger.LogInformation("Key: {0}, Value: {1}", c.Key, c.Value);
+                _logger.LogInformation($"{c.Key}: {c.Value}");
             }
         }
 
-        private List<KeyValuePair<string, string>> AssemblyInfo()
+        private static List<KeyValuePair<string, string>> AssemblyInfo()
         {
             var results = new List<KeyValuePair<string, string>>();
             var propsToGet = new List<string>() { "AssemblyProductAttribute", "AssemblyCopyrightAttribute", "AssemblyCompanyAttribute", "AssemblyDescriptionAttribute", "AssemblyFileVersionAttribute" };
