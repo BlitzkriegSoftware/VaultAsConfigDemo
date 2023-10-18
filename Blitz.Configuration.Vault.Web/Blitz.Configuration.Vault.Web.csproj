@@ -12,6 +12,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="wwwroot\lib\**" />
+	  <Content Remove="wwwroot\lib\**" />
+	  <EmbeddedResource Remove="wwwroot\lib\**" />
+	  <None Remove="wwwroot\lib\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
@@ -22,10 +29,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Blitz.Configuration.Vault.Library\Blitz.Configuration.Vault.Library.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="wwwroot\lib\" />
 	</ItemGroup>
 
 	<ItemGroup>
