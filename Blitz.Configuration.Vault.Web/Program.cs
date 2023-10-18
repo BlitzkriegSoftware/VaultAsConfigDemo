@@ -21,6 +21,7 @@ namespace Blitz.Configuration.Vault.Web
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                ;
     }
 }

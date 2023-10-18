@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Blitz.Configuration.Vault.Library.Helpers;
+using System.Reflection.PortableExecutable;
 
 namespace Blitz.Configuration.Vault.Web
 {
@@ -51,6 +52,7 @@ namespace Blitz.Configuration.Vault.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -67,7 +69,10 @@ namespace Blitz.Configuration.Vault.Web
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
+
+        #region "Program Logger"
 
         private ILogger _programlogger;
 
@@ -87,6 +92,7 @@ namespace Blitz.Configuration.Vault.Web
             }
         }
 
+        #endregion
 
     }
 }
