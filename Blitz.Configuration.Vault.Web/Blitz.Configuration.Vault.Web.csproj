@@ -4,10 +4,10 @@
 		<Title>Vault as Config Web</Title>
 		<TargetFramework>net6.0</TargetFramework>
 		<LangVersion>9.0</LangVersion>
-		<Version>6.1.1</Version>
-		<InformationalVersion>6.1.1</InformationalVersion>
+		<Version>6.2.0</Version>
+		<InformationalVersion>6.2.0</InformationalVersion>
 		<Authors>Stuart Williams</Authors>
-		<Copyright>(c) Stuart Williams 2020-2023</Copyright>
+		<Copyright>(c) Stuart Williams 2020-2024</Copyright>
 		<Description>How to use Hashicorp Vault as Configuration</Description>
 	</PropertyGroup>
 

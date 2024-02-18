@@ -18,13 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{6F74
 	ProjectSection(SolutionItems) = preProject
 		scripts\myApp-dev-settings.json = scripts\myApp-dev-settings.json
 		scripts\put-settings.ps1 = scripts\put-settings.ps1
-		scripts\put-settings.sh = scripts\put-settings.sh
 		scripts\start_docker_vault.ps1 = scripts\start_docker_vault.ps1
-		scripts\start_docker_vault.sh = scripts\start_docker_vault.sh
 		scripts\stop_docker_vault.ps1 = scripts\stop_docker_vault.ps1
-		scripts\stop_docker_vault.sh = scripts\stop_docker_vault.sh
 		scripts\vault-status.ps1 = scripts\vault-status.ps1
-		scripts\vault-status.sh = scripts\vault-status.sh
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blitz.Configuration.Vault.Web", "Blitz.Configuration.Vault.Web\Blitz.Configuration.Vault.Web.csproj", "{FF2E3BD5-F36A-4528-B727-E53E747197D3}"

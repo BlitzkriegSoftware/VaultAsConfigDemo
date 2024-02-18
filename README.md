@@ -43,7 +43,7 @@ Under the RootPath of `RootPath`, so in the Hasicorp Parlance, the **Store** is 
 $ ./Blitz.Configuration.Vault.Demo --help
 Blitz.Configuration.Vault.Demo 1.0.0 Copyright (C) 2020 Blitz.Configuration.Vault.Demo
 Blitz.Configuration.Vault.Demo 1.0.0
-Copyright (C) 2020-2023 Blitz.Configuration.Vault.Demo
+Copyright (C) 2020-2024 Blitz.Configuration.Vault.Demo
 USAGE:
 From Environment Variables:
   VaultDemo

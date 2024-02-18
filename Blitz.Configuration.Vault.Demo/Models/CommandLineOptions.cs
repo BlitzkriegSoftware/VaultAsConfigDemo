@@ -51,9 +51,9 @@ namespace Blitz.Configuration.Vault.Demo.Models
             get
             {
                 return new List<Example>() {
-                    new Example("From Environment Variables", new CommandLineOptions { }),
-                    new Example("Vary Environment", new CommandLineOptions { Environment = "dev", Application = "myApp", Token = "myroot"  }),
-                    new Example("Full command line", new CommandLineOptions { Application = "myApp", Environment = "dev", Dump = true, Token = "myroot", VaultUrl = "http://localhost:8200", RootPath= "v1/secret/data" })
+                    new ("From Environment Variables", new CommandLineOptions { }),
+                    new ("Vary Environment", new CommandLineOptions { Environment = "dev", Application = "myApp", Token = "myroot"  }),
+                    new ("Full command line", new CommandLineOptions { Application = "myApp", Environment = "dev", Dump = true, Token = "myroot", VaultUrl = "http://localhost:8200", RootPath= "v1/secret/data" })
                 };
             }
         }
